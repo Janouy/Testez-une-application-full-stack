@@ -15,6 +15,7 @@ import { SessionApiService } from '../../services/session-api.service';
 import { Router } from '@angular/router';
 import { FormComponent } from './form.component';
 import { of } from 'rxjs';
+import { convertToParamMap, ActivatedRoute } from '@angular/router';
 
 describe('FormComponent', () => {
   let component: FormComponent;
@@ -163,5 +164,37 @@ describe('FormComponent', () => {
     const button: HTMLButtonElement = fixture.nativeElement.querySelector('button[type="submit"]');
 
     expect(button.disabled).toEqual(true);
+  });
+
+  it('should enter update mode, load the session and init the form', () => {
+    jest.spyOn(router, 'url', 'get').mockReturnValue('/sessions/update/1');
+
+    const route = TestBed.inject(ActivatedRoute) as any;
+    route.snapshot = { paramMap: convertToParamMap({ id: '1' }) };
+
+    fixture = TestBed.createComponent(FormComponent);
+    component = fixture.componentInstance;
+
+    const initSpy = jest.spyOn(component as any, 'initForm');
+
+    fixture.detectChanges();
+
+    expect(component.onUpdate).toBe(true);
+    expect(mockSessionApiService.detail).toHaveBeenCalledWith('1');
+    expect(initSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        id: 1,
+        name: 'Yoga',
+      }),
+    );
+
+    expect(component.sessionForm?.value).toEqual(
+      expect.objectContaining({
+        name: 'Yoga',
+        date: '2025-07-27',
+        teacher_id: 1,
+        description: 'Yoga session description',
+      }),
+    );
   });
 });
