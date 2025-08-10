@@ -8,18 +8,11 @@ import { SessionService } from './services/session.service';
 
 import { AppComponent } from './app.component';
 
-
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        HttpClientModule,
-        MatToolbarModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule, HttpClientModule, MatToolbarModule],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
@@ -30,7 +23,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-           it('should call sessionService.$isLogged when $isLogged is called', () => {
+  it('should call sessionService.$isLogged when $isLogged is called', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const component = fixture.componentInstance;
     const sessionService = TestBed.inject(SessionService);
@@ -38,7 +31,7 @@ describe('AppComponent', () => {
     component.$isLogged();
 
     expect(spy).toHaveBeenCalled();
-        });
+  });
 
   it('should call sessionService.logOut and navigate to root on logout', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -53,5 +46,4 @@ describe('AppComponent', () => {
     expect(logoutSpy).toHaveBeenCalled();
     expect(navigateSpy).toHaveBeenCalledWith(['']);
   });
-
 });

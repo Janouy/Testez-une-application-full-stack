@@ -10,10 +10,11 @@
     </mat-card-title>
     <mat-card-content>
       <div *ngIf="user" fxLayout="column" fxLayoutAlign="start center">
-        <p>Name: {{ user.firstName }} {{ user.lastName | uppercase }}</p>
-        <p>Email: {{ user.email }}</p>
-        <p *ngIf="user.admin" class="my2">You are admin</p>
-        <div *ngIf="!user.admin" fxLayout="column" class="my2" fxLayoutAlign="center center">
+        <p data-testid="user-name">Name: {{ user.firstName }} {{ user.lastName | uppercase }}</p>
+        <p data-testid="user-email">Email: {{ user.email }}</p>
+        <p *ngIf="user.admin" class="my2" data-testid="user-admin-flag">You are admin</p>
+        <div *ngIf="!user.admin" fxLayout="column" class="my2" fxLayoutAlign="center center"
+          data-testid="delete-button">
           <p>Delete my account:</p>
           <button mat-raised-button color="warn" (click)="delete()">
             <mat-icon>delete</mat-icon>
@@ -22,8 +23,8 @@
         </div>
         <div fxLayoutAlign="space-between center" class="p2 w100">
 
-          <p><i>Create at: </i> {{ user.createdAt | date: 'longDate'}}</p>
-          <p><i>Last update: </i> {{ user.updatedAt| date: 'longDate'}}</p>
+          <p data-testid="user-created-at"><i>Create at: </i> {{ user.createdAt | date: 'longDate'}}</p>
+          <p data-testid="user-updated-at"><i>Last update: </i> {{ user.updatedAt | date: 'longDate'}}</p>
         </div>
       </div>
     </mat-card-content>
