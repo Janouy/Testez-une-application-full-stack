@@ -1,5 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatButtonModule } from '@angular/material/button';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { expect } from '@jest/globals';
@@ -45,7 +48,14 @@ describe('ListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ListComponent],
-      imports: [HttpClientModule, MatCardModule, MatIconModule],
+      imports: [
+        HttpClientModule,
+        MatCardModule,
+        MatIconModule,
+        RouterTestingModule.withRoutes([]),
+        MatButtonModule,
+        NoopAnimationsModule,
+      ],
       providers: [{ provide: SessionService, useValue: mockSessionService }],
     }).compileComponents();
 

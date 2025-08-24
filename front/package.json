@@ -45,6 +45,7 @@
     "@briebug/jest-schematic": "4.0.0",
     "@cypress/code-coverage": "3.10.0",
     "@cypress/schematic": "2.0.3",
+    "@faker-js/faker": "^7.6.0",
     "@istanbuljs/nyc-config-typescript": "1.0.2",
     "@jsdevtools/coverage-istanbul-loader": "3.0.5",
     "@types/jest": "28.1.3",
