@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 import { FormComponent } from './form.component';
 import { of } from 'rxjs';
 import { convertToParamMap, ActivatedRoute } from '@angular/router';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('FormComponent', () => {
   let component: FormComponent;
@@ -61,6 +62,7 @@ describe('FormComponent', () => {
         MatSelectModule,
         BrowserAnimationsModule,
         HttpClientTestingModule,
+        NoopAnimationsModule,
       ],
       providers: [
         { provide: SessionService, useValue: mockSessionService },
@@ -71,6 +73,7 @@ describe('FormComponent', () => {
     }).compileComponents();
     router = TestBed.inject(Router);
     fixture = TestBed.createComponent(FormComponent);
+    jest.spyOn(router, 'navigate').mockResolvedValue(true as any);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

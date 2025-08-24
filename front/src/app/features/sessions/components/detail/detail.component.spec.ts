@@ -1,9 +1,10 @@
 import { of, throwError } from 'rxjs';
-import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
-import { RouterTestingModule } from '@angular/router/testing';
+import { MatIconModule } from '@angular/material/icon';
 import { expect } from '@jest/globals';
 import { SessionService } from '../../../../services/session.service';
 import { SessionApiService } from '../../services/session-api.service';
@@ -54,7 +55,7 @@ describe('DetailComponent', () => {
   };
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientModule, MatSnackBarModule, ReactiveFormsModule],
+      imports: [MatSnackBarModule, ReactiveFormsModule, MatCardModule, MatIconModule],
       declarations: [DetailComponent],
       providers: [
         { provide: SessionService, useValue: mockSessionService },
