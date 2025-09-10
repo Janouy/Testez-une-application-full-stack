@@ -70,11 +70,18 @@ git clone https://github.com/Janouy/Testez-une-application-full-stack.git
 
 > npm run test:watch
 
-### End-to-end tests
+### End-to-end tests 
+
+While project is running
 
 > npm run e2e
 
+Open your favorite browser
+Run all.cy.ts file
+
 #### Generate coverage report:
+
+After running e2e tests
 
 > npm run e2e:coverage
 
