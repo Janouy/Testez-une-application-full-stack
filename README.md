@@ -37,7 +37,6 @@ No manual table creation is required — the Java project will automatically gen
 ## Install project
 Clone the repository:
 
-
 git clone https://github.com/Janouy/Testez-une-application-full-stack.git
 
 ## Start Java project
@@ -66,9 +65,13 @@ git clone https://github.com/Janouy/Testez-une-application-full-stack.git
 
 > npm run test
 
-#### For following change:
+#### Generate coverage report:
 
-> npm run test:watch
+> npm run jest:coverage
+
+#### Report is available here:
+
+> front/coverage/jest/lcov-report/index.html
 
 ### End-to-end tests 
 
@@ -77,6 +80,7 @@ While project is running
 > npm run e2e
 
 Open your favorite browser
+***
 Run all.cy.ts file
 
 #### Generate coverage report:
