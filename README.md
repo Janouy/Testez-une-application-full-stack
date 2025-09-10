@@ -79,9 +79,7 @@ While project is running
 
 > npm run e2e
 
-Open your favorite browser
-***
-Run all.cy.ts file
+Open your favorite browser and run all.cy.ts file
 
 #### Generate coverage report:
 
