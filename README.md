@@ -38,7 +38,7 @@ No manual table creation is required — the Java project will automatically gen
 Clone the repository:
 
 
-git clone https://github.com/OpenClassrooms-Student-Center/P5-Full-Stack-testing
+git clone https://github.com/Janouy/Testez-une-application-full-stack.git
 
 ## Start Java project
 
