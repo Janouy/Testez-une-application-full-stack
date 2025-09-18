@@ -66,15 +66,25 @@ git clone https://github.com/Janouy/Testez-une-application-full-stack.git
 
 > npm run test
 
-#### For following change:
+#### Generate coverage report:
 
-> npm run test:watch
+> npm run jest:coverage
 
-### End-to-end tests
+#### Report is available here:
+
+> front/coverage/jest/lcov-report/index.html
+
+### End-to-end tests 
+
+While project is running
 
 > npm run e2e
 
+Open your favorite browser and run all.cy.ts file
+
 #### Generate coverage report:
+
+After running e2e tests
 
 > npm run e2e:coverage
 
