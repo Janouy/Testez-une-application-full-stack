@@ -200,4 +200,41 @@ describe('FormComponent', () => {
       }),
     );
   });
+
+  it('should show validation errors when required fields are missing', () => {
+    component.sessionForm = new FormBuilder().group({
+      name: ['', [Validators.required]],
+      date: ['', [Validators.required]],
+      teacher_id: [null, [Validators.required]],
+      description: ['', [Validators.required, Validators.maxLength(2000)]],
+    });
+    fixture.detectChanges();
+
+    component.submit();
+    fixture.detectChanges();
+
+    const nameInput: HTMLInputElement = fixture.nativeElement.querySelector(
+      '[data-testid="name-input"]',
+    );
+    const dateInput: HTMLInputElement = fixture.nativeElement.querySelector(
+      '[data-testid="date-input"]',
+    );
+    const teacherSelect: HTMLElement = fixture.nativeElement.querySelector(
+      '[data-testid="teacher-select"]',
+    );
+    const descriptionInput: HTMLTextAreaElement = fixture.nativeElement.querySelector(
+      '[data-testid="description-input"]',
+    );
+
+    expect(nameInput.classList).toContain('ng-invalid');
+    expect(dateInput.classList).toContain('ng-invalid');
+    expect(teacherSelect.classList).toContain('ng-invalid');
+    expect(descriptionInput.classList).toContain('ng-invalid');
+
+    const button: HTMLButtonElement = fixture.nativeElement.querySelector(
+      '[data-testid="save-button"]',
+    );
+
+    expect(button.disabled).toBe(true);
+  });
 });

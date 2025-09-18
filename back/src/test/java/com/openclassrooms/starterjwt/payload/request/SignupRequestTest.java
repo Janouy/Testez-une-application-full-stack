@@ -114,7 +114,7 @@ public class SignupRequestTest {
 	void equals_bothNullEmails_areEqual() {
 		SignupRequest a = full(null, "Ana", "Bell", "secret123");
 		SignupRequest b = full(null, "Ana", "Bell", "secret123");
-		assertEquals(a, b); // couvre le chemin null/null
+		assertEquals(a, b);
 	}
 
 	@Test
@@ -150,6 +150,85 @@ public class SignupRequestTest {
 		SignupRequest a = full("a@b.com", "Ana", "Bell", "secret123");
 		SignupRequest b = full("a@b.com", "Ana", "Bell", "secret456");
 		assertNotEquals(a, b);
+	}
+
+	@Test
+	void equals_allFieldsNull_areEqual() {
+		SignupRequest a = full(null, null, null, null);
+		SignupRequest b = full(null, null, null, null);
+		assertEquals(a, b);
+		assertEquals(b, a);
+		assertEquals(a.hashCode(), b.hashCode());
+	}
+
+	@Test
+	void equals_bothNullFirstName_areEqual() {
+		SignupRequest a = full("e@e.com", null, "L", "p");
+		SignupRequest b = full("e@e.com", null, "L", "p");
+		assertEquals(a, b);
+	}
+
+	@Test
+	void equals_bothNullLastName_areEqual() {
+		SignupRequest a = full("e@e.com", "F", null, "p");
+		SignupRequest b = full("e@e.com", "F", null, "p");
+		assertEquals(a, b);
+	}
+
+	@Test
+	void equals_bothNullPassword_areEqual() {
+		SignupRequest a = full("e@e.com", "F", "L", null);
+		SignupRequest b = full("e@e.com", "F", "L", null);
+		assertEquals(a, b);
+	}
+
+	@Test
+	void equals_password_nullVsNonNull_isFalse() {
+		SignupRequest a = full("e@e.com", "F", "L", null);
+		SignupRequest b = full("e@e.com", "F", "L", "pwd");
+		assertNotEquals(a, b);
+	}
+
+	@Test
+	void equals_transitivity_holds() {
+		SignupRequest a = full("e@e.com", "F", "L", "pwd");
+		SignupRequest b = full("e@e.com", "F", "L", "pwd");
+		SignupRequest c = full("e@e.com", "F", "L", "pwd");
+		assertEquals(a, b);
+		assertEquals(b, c);
+		assertEquals(a, c);
+	}
+
+	@Test
+	void hashCode_isConsistent_acrossCalls() {
+		SignupRequest a = full("e@e.com", "F", "L", "pwd");
+		int h1 = a.hashCode();
+		int h2 = a.hashCode();
+		assertEquals(h1, h2);
+	}
+
+	@Test
+	void hashCode_differs_whenAFieldDiffers_email() {
+		SignupRequest a = full("a@b.com", "F", "L", "pwd");
+		SignupRequest b = full("x@y.com", "F", "L", "pwd");
+		assertNotEquals(a, b);
+		assertNotEquals(a.hashCode(), b.hashCode());
+	}
+
+	@Test
+	void hashCode_handlesNullFields() {
+		SignupRequest a = full(null, "F", "L", "pwd");
+		SignupRequest b = full(null, "F", "L", "pwd");
+		assertEquals(a, b);
+		assertEquals(a.hashCode(), b.hashCode());
+	}
+
+	@Test
+	void toString_containsPresentFieldsAndHandlesNulls() {
+		SignupRequest a = full("e@e.com", null, "L", null);
+		String s = a.toString();
+		assertTrue(s.contains("e@e.com"));
+
 	}
 
 }

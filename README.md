@@ -31,14 +31,14 @@ It allows members to register for yoga classes and manage their participation, w
 
 ## Install My SQL Data Base:
 
-To set up the database locally, install MySQL and run it on the default port 3306.
+To set up the database locally, install MySQL, create a data base named 'test' and run it on the default port 3306.
 No manual table creation is required — the Java project will automatically generate all necessary tables when it starts for the first time.
+
 
 ## Install project
 Clone the repository:
 
-
-git clone https://github.com/OpenClassrooms-Student-Center/P5-Full-Stack-testing
+git clone https://github.com/Janouy/Testez-une-application-full-stack.git
 
 ## Start Java project
 
